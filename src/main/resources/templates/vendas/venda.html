@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard: Finance</title>
+    <!-- Importação da fonte de ícones do Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <aside>
+        <header class="top">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Logo da Shadow">
+                <h2 class="text-muted">SHA<span class="danger">DOW</span></h2>
+            </div>
+            <button class="close" id="close-btn" aria-label="Fechar menu">
+                <span class="material-symbols-sharp">close</span>
+            </button>
+        </header>
+
+        <nav class="sidebar">
+            <a href="/dash"  aria-label="Ir para o Dashboard">
+                <span class="material-symbols-sharp">space_dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="/venda" class="active" aria-label="Ir para a seção de Vendas">
+                <span class="material-symbols-sharp">receipt_long</span>
+                <h3>Vendas</h3>
+            </a>
+            <a href="/pro" aria-label="Ir para a seção de Produtos">
+                <span class="material-symbols-sharp">inventory</span>
+                <h3>Produtos</h3>
+            </a>
+            <a href="config.html" aria-label="Ir para a seção de Configurações">
+                <span class="material-symbols-sharp">settings</span>
+                <h3>Configurações</h3>
+            </a>
+            <a href="#" aria-label="Sair da conta">
+                <span class="material-symbols-sharp">logout</span>
+                <h3>Sair</h3>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Vendas</h1>
+        <section class="date">
+            <input type="date" aria-label="Escolher data">
+        </section>
+
+        <section class="recent-orders">
+            <h2>Vendas Recentes</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Numero de venda</th>
+                    <th>Nome</th>
+                    <th>Forma de pagamento</th>
+                    <th>Quantidade</th>
+                    <th>Valor Total</th>
+                    <th>Descrição</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="venda : ${vendas}">
+                    <td th:text="${venda.numberBuy}"></td>
+                    <td th:text="${venda.product.nameProduct}"></td>
+                    <td class="warning" th:text="${venda.TypeBuy}"></td>
+                    <td th:text="${venda.quantity}"></td>
+                    <td th:text="${venda.priceTotal}"></td>
+                    <td class="primary">Detalhes</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Right Sidebar -->
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn" aria-label="Abrir menu">
+                <span class="material-symbols-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p>Oi, <b>Shadow</b></p>
+                    <small class="text-muted">Administrador</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="images/Admin.jpg" alt="Foto de perfil do administrador">
+                </div>
+            </div>
+        </div>
+
+        <section class="recent-updates">
+            <h2>Atualizações Recentes</h2>
+            <div class="updates">
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="./images/Admin.jpg" alt="Foto de perfil">
+                    </div>
+                    <div class="message">
+                        <p><b>Shadow (admin)</b> recebeu seu pedido agora.</p>
+                        <small class="text-muted">Há 2 minutos</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sales-analytics">
+            <a href="/vendas/add" class="item add-product">
+                <div>
+                    <span class="material-icons-sharp">+</span>
+                    <h3>Add Venda</h3>
+                </div>
+            </a>
+        </section>
+    </div>
+</div>
+</body>
+</html>
