@@ -29,21 +29,21 @@ public class VendasController {
     @Autowired
     private VendaService vendaService;
 
-    // Método para exibir as vendas
     @GetMapping("/venda")
     public ModelAndView GetVendas() {
-        ModelAndView mvs = new ModelAndView("vendas/venda"); // Nome do template corrigido
-        List<Vendas> vendas = vendasRepository.findAll();  // Correção aqui
+        ModelAndView mvs = new ModelAndView("vendas/venda");
+        List<Vendas> vendas = vendasRepository.findAll();
 
-        // Calculando o preço total de cada venda
         for (Vendas venda : vendas) {
             double total = vendaService.calculatePriceTotal(venda);
             venda.setPriceTotal(total);
         }
 
         mvs.addObject("vendas", vendas);
+
         return mvs;
     }
+
 
     @GetMapping("/vendas/add")
     public ModelAndView AddVenda() {

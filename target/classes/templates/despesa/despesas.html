@@ -6,7 +6,7 @@
     <title>Dashboard: Finance</title>
     <!-- Importação da fonte de ícones do Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-    <link rel="stylesheet" href="css/Pro.css">
+    <link rel="stylesheet" href="css/Desp.css">
 </head>
 <body>
 <div class="container">
@@ -24,15 +24,15 @@
                 <span class="material-symbols-sharp">space_dashboard</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="/venda" aria-label="Ir para a seção de Vendas">
+            <a href="/venda"  aria-label="Ir para a seção de Vendas">
                 <span class="material-symbols-sharp">receipt_long</span>
                 <h3>Vendas</h3>
             </a>
-            <a href="/desp" aria-label="Ir para a seção de Analytics">
+            <a href="/desp" class="active" aria-label="Ir para a seção de Analytics">
                 <span class="material-symbols-sharp">insights</span>
                 <h3>Despesas</h3>
             </a>
-            <a href="/pro"  class="active" aria-label="Ir para a seção de Produtos">
+            <a href="/pro" aria-label="Ir para a seção de Produtos">
                 <span class="material-symbols-sharp">inventory</span>
                 <h3>Produtos</h3>
             </a>
@@ -45,26 +45,26 @@
 
     <!-- Main Content -->
     <main>
-        <h1>Produtos</h1>
+        <h1>Despesas</h1>
         <section class="date">
             <input type="date" aria-label="Escolher data">
         </section>
 
         <section class="recent-orders">
-            <h2>Lista de Produtos</h2>
+            <h2>Despesas Recentes</h2>
             <table>
                 <thead>
                 <tr>
-                    <th>Numero do produto</th>
-                    <th>Nome do produto</th>
-                    <th>Preco do produto</th>
+                    <th>Nome</th>
+                    <th>Valor Total</th>
+                    <th>Descrição</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="product : ${products}">
-                    <td th:text="${product.idProduct}"></td>
-                    <td th:text="${product.nameProduct}"></td>
-                    <td th:text="${product.price}"></td>
+                <tr th:each="desp : ${despesas}">
+                    <td th:text="${desp.nome}"></td>
+                    <td th:text="${desp.price}"></td>
+                    <td class="primary">Detalhes</td>
                 </tr>
                 </tbody>
             </table>
@@ -126,10 +126,10 @@
             </div>
         </section>
         <section class="sales-analytics">
-            <a href="/pro/add" class="item add-product">
+            <a href="/vendas/add" class="item add-product">
                 <div>
                     <span class="material-icons-sharp">+</span>
-                    <h3>Add Product</h3>
+                    <h3>Add Despesa</h3>
                 </div>
             </a>
         </section>

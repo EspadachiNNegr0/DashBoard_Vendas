@@ -22,6 +22,8 @@ public class Vendas {
     @Temporal(TemporalType.DATE)
     private Date created;
 
+    private double vendasTotal;
+
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "idProduct")
@@ -94,4 +96,11 @@ public class Vendas {
         this.created = created;
     }
 
+    public double getVendasTotal() {
+        return vendasTotal;
+    }
+
+    public void setVendasTotal(double vendasTotal) {
+        this.vendasTotal = vendasTotal;
+    }
 }

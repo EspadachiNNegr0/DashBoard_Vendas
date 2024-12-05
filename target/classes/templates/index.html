@@ -7,7 +7,7 @@
 
     <!-- Importação da fonte de ícones do Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Dash.css">
 </head>
 <body>
 <div class="container">
@@ -18,52 +18,45 @@
                 <img src="./images/logo.png" alt="Logo da Shadow" />
                 <h2 class="text-muted">SHA<span class="danger">DOW</span></h2>
             </div>
-            <button class="close" id="close-btn" aria-label="Fechar menu">
-                <span class="material-symbols-sharp">close</span>
-            </button>
         </header>
 
         <nav class="sidebar">
-            <a href="/dash" class="active" aria-label="Ir para o Dashboard">
+            <a href="/Dash" class="active" aria-label="Ir para o Dashboard">
                 <span class="material-symbols-sharp">space_dashboard</span>
                 <h3>Dashboard</h3>
             </a>
-<!--            <a href="#" class="active" aria-label="Ir para a seção de Clientes">-->
-<!--                <span class="material-symbols-sharp">person_outline</span>-->
-<!--                <h3>Clientes</h3>-->
-<!--            </a>-->
+            <!--            <a href="#" class="active" aria-label="Ir para a seção de Clientes">-->
+            <!--                <span class="material-symbols-sharp">person_outline</span>-->
+            <!--                <h3>Clientes</h3>-->
+            <!--            </a>-->
             <a href="/venda" aria-label="Ir para a seção de Pedidos">
                 <span class="material-symbols-sharp">receipt_long</span>
                 <h3>Vendas</h3>
             </a>
-<!--            <a href="#" aria-label="Ir para a seção de Analytics">-->
-<!--                <span class="material-symbols-sharp">insights</span>-->
-<!--                <h3>Analytics</h3>-->
-<!--            </a>-->
-<!--            <a href="#" aria-label="Ir para a seção de Mensagens">-->
-<!--                <span class="material-symbols-sharp">mail_outline</span>-->
-<!--                <h3>Mensagens</h3>-->
-<!--                <span class="message-count">26</span>-->
-<!--            </a>-->
+            <a href="/desp" aria-label="Ir para a seção de Analytics">
+                <span class="material-symbols-sharp">insights</span>
+                <h3>Despesas</h3>
+            </a>
+            <!--        <a href="#" aria-label="Ir para a seção de Mensagens">-->
+            <!--                <span class="material-symbols-sharp">mail_outline</span>-->
+            <!--                <h3>Mensagens</h3>-->
+            <!--                <span class="message-count">26</span>-->
+            <!--            </a>-->
             <a href="/pro" aria-label="Ir para a seção de Produtos">
                 <span class="material-symbols-sharp">inventory</span>
                 <h3>Produtos</h3>
             </a>
-<!--            <a href="#" aria-label="Ir para a seção de Relatórios">-->
-<!--                <span class="material-symbols-sharp">report_gmailerrorred</span>-->
-<!--                <h3>Relatórios</h3>-->
-<!--            </a>-->
-<!--            <a href="#" aria-label="Adicionar um novo Produto">-->
-<!--                <span class="material-symbols-sharp">add</span>-->
-<!--                <h3>Adicionar Produto</h3>-->
-<!--            </a>-->
+            <!--            <a href="#" aria-label="Ir para a seção de Relatórios">-->
+            <!--                <span class="material-symbols-sharp">report_gmailerrorred</span>-->
+            <!--                <h3>Relatórios</h3>-->
+            <!--            </a>-->
+            <!--            <a href="#" aria-label="Adicionar um novo Produto">-->
+            <!--                <span class="material-symbols-sharp">add</span>-->
+            <!--                <h3>Adicionar Produto</h3>-->
+            <!--            </a>-->
             <a href="config.html" aria-label="Ir para a seção de Configurações">
                 <span class="material-symbols-sharp">settings</span>
                 <h3>Configurações</h3>
-            </a>
-            <a href="#" aria-label="Sair da conta">
-                <span class="material-symbols-sharp">logout</span>
-                <h3>Sair</h3>
             </a>
         </nav>
     </aside>
@@ -83,7 +76,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total de Vendas</h3>
-                        <h1>$25,024</h1>
+                        <h1>$<span th:text="${somaVendasTotal}"></span></h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -103,7 +96,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total de Despesas</h3>
-                        <h1>$14,160</h1>
+                        <h1>$<span th:text="${somaDespes}"></span></h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -170,14 +163,12 @@
     <!-- Right Sidebar -->
     <div class="right">
         <div class="top">
-            <button id="menu-btn" aria-label="Abrir menu">
-                <span class="material-symbols-sharp">menu</span>
-            </button>
             <div class="theme-toggler">
-                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">light_mode</span>
                 <span class="material-symbols-sharp">dark_mode</span>
             </div>
-            <div class="profile">
+
+            <div class="profile" onclick="toggleSubMenu()">
                 <div class="info">
                     <p>Oi, <b>Shadow</b></p>
                     <small class="text-muted">Administrador</small>
@@ -186,41 +177,46 @@
                     <img src="images/Admin.jpg" alt="" />
                 </div>
             </div>
+
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="images/Admin.jpg" alt="Perfil">
+                        <h2>Shadow</h2>
+                    </div>
+                    <hr>
+                    <a href="/profile">
+                        <span class="material-symbols-sharp">person</span>
+                        Meu Perfil
+                    </a>
+                    <a href="/settings">
+                        <span class="material-symbols-sharp">settings</span>
+                        Configurações
+                    </a>
+                    <a href="/logout">
+                        <span class="material-symbols-sharp">logout</span>
+                        Sair
+                    </a>
+                </div>
+            </div>
+
+            <section class="recent-updates">
+                <h2>Atualizações Recentes</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/Admin.jpg" alt="" />
+                        </div>
+                        <div class="message">
+                            <p><b>Shadow (admin)</b> recebeu seu pedido agora.</p>
+                            <small class="text-muted">Há 2 minutos</small>
+                        </div>
+                    </div>
+                    <!-- Outras atualizações -->
+                </div>
+            </section>
         </div>
-
-        <section class="recent-updates">
-            <h2>Atualizações Recentes</h2>
-            <div class="updates">
-                <div class="update">
-                    <div class="profile-photo">
-                        <img src="./images/Admin.jpg" alt="" />
-                    </div>
-                    <div class="message">
-                        <p><b>Shadow (admin)</b> recebeu seu pedido agora.</p>
-                        <small class="text-muted">Há 2 minutos</small>
-                    </div>
-                </div>
-                <!-- Outras atualizações -->
-            </div>
-        </section>
-
-        <section class="sales-analytics">
-            <h2>Analytics de Vendas</h2>
-            <div class="item online">
-                <div class="icon">
-                    <span class="material-symbols-sharp">shopping_cart</span>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Pedidos Online</h3>
-                        <small class="text-muted">Últimas 24 horas</small>
-                    </div>
-                    <h5 class="success">+39%</h5>
-                    <h3>3849</h3>
-                </div>
-            </div>
-        </section>
     </div>
-</div>
+    <script src="js/index.js"></script>
 </body>
 </html>
