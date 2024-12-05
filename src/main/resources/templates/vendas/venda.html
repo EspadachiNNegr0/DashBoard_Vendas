@@ -6,7 +6,7 @@
     <title>Dashboard: Finance</title>
     <!-- Importação da fonte de ícones do Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Form.css">
 </head>
 <body>
 <div class="container">
@@ -17,19 +17,20 @@
                 <img src="./images/logo.png" alt="Logo da Shadow">
                 <h2 class="text-muted">SHA<span class="danger">DOW</span></h2>
             </div>
-            <button class="close" id="close-btn" aria-label="Fechar menu">
-                <span class="material-symbols-sharp">close</span>
-            </button>
         </header>
 
         <nav class="sidebar">
-            <a href="/dash"  aria-label="Ir para o Dashboard">
+            <a href="/Dash"  aria-label="Ir para o Dashboard">
                 <span class="material-symbols-sharp">space_dashboard</span>
                 <h3>Dashboard</h3>
             </a>
             <a href="/venda" class="active" aria-label="Ir para a seção de Vendas">
                 <span class="material-symbols-sharp">receipt_long</span>
                 <h3>Vendas</h3>
+            </a>
+            <a href="/desp" aria-label="Ir para a seção de Analytics">
+                <span class="material-symbols-sharp">insights</span>
+                <h3>Despesas</h3>
             </a>
             <a href="/pro" aria-label="Ir para a seção de Produtos">
                 <span class="material-symbols-sharp">inventory</span>
@@ -38,10 +39,6 @@
             <a href="config.html" aria-label="Ir para a seção de Configurações">
                 <span class="material-symbols-sharp">settings</span>
                 <h3>Configurações</h3>
-            </a>
-            <a href="#" aria-label="Sair da conta">
-                <span class="material-symbols-sharp">logout</span>
-                <h3>Sair</h3>
             </a>
         </nav>
     </aside>
@@ -83,25 +80,45 @@
     <!-- Right Sidebar -->
     <div class="right">
         <div class="top">
-            <button id="menu-btn" aria-label="Abrir menu">
-                <span class="material-symbols-sharp">menu</span>
-            </button>
             <div class="theme-toggler">
-                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">light_mode</span>
                 <span class="material-symbols-sharp">dark_mode</span>
             </div>
-            <div class="profile">
+
+            <div class="profile" onclick="toggleSubMenu()">
                 <div class="info">
                     <p>Oi, <b>Shadow</b></p>
                     <small class="text-muted">Administrador</small>
                 </div>
                 <div class="profile-photo">
-                    <img src="images/Admin.jpg" alt="Foto de perfil do administrador">
+                    <img src="images/Admin.jpg" alt="" />
                 </div>
             </div>
-        </div>
 
-        <section class="recent-updates">
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="images/Admin.jpg" alt="Perfil">
+                        <h2>Shadow</h2>
+                    </div>
+                    <hr>
+                    <a href="/profile">
+                        <span class="material-symbols-sharp">person</span>
+                        Meu Perfil
+                    </a>
+                    <a href="/settings">
+                        <span class="material-symbols-sharp">settings</span>
+                        Configurações
+                    </a>
+                    <a href="/logout">
+                        <span class="material-symbols-sharp">logout</span>
+                        Sair
+                    </a>
+                </div>
+            </div>
+
+
+            <section class="recent-updates">
             <h2>Atualizações Recentes</h2>
             <div class="updates">
                 <div class="update">
@@ -125,5 +142,6 @@
         </section>
     </div>
 </div>
+<script src="js/index.js"></script>
 </body>
 </html>
