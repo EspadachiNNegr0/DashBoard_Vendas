@@ -640,19 +640,30 @@ input[type="date"]:focus, input[type="text"]:focus, input[type="number"]:focus, 
 }
 
 button.primary-btn {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 10px;
+    background-color: transparent; /* Fundo transparente */
+    color: var(--color-primary); /* Cor do texto igual ao do link */
+    border: none; /* Sem borda */
+    padding:  200px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Indicador de clique */
+    transition: color 0.3s ease, transform 0.2s; /* Transição para a cor e o efeito de hover */
 }
 
 button.primary-btn:hover {
-    background-color: #45a049;
+    border: none;
+    color: var(--color-dark); /* Cor do texto no hover */
+    transform: scale(1.05); /* Efeito de aumentar ao passar o mouse */
 }
+
+button.primary-btn:focus {
+    outline: none; /* Remover o contorno ao focar no botão */
+}
+
+/* Adicionar o efeito de hover do link */
+button.primary-btn:active {
+    transform: scale(1); /* Retorno ao tamanho normal */
+}
+
 
 /* Submenu */
 .sub-menu-wrap {
@@ -721,6 +732,28 @@ button.primary-btn:hover {
 }
 
 .sub-menu a span {
+    margin-right: 10px;
+    font-size: 18px; /* Tamanho do ícone */
+    color: var(--color-primary, var(--color-whiter)); /* Cor do ícone */
+}
+
+.sub-menu form a {
+    display: flex;
+    align-items: center;
+    margin-left: -3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--color-dark);
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.sub-menu form a:hover {
+    background: var(--color-whiters); /* Cor de fundo ao passar o mouse */
+}
+
+.sub-menu form span {
     margin-right: 10px;
     font-size: 18px; /* Tamanho do ícone */
     color: var(--color-primary, var(--color-whiter)); /* Cor do ícone */

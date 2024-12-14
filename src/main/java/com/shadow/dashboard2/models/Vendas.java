@@ -10,9 +10,8 @@ public class Vendas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idVenda;
+    private long numberBuyID;
 
-    private int numberBuy;
     private int quantity;
     private Double priceTotal;
     private String description;
@@ -22,9 +21,6 @@ public class Vendas {
     @Temporal(TemporalType.DATE)
     private Date created;
 
-    private double vendasTotal;
-
-
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "idProduct")
     private Products product;
@@ -32,20 +28,12 @@ public class Vendas {
     public Vendas() {
     }
 
-    public Long getIdVenda() {
-        return idVenda;
+    public long getNumberBuyID() {
+        return numberBuyID;
     }
 
-    public void setIdVenda(Long idVenda) {
-        this.idVenda = idVenda;
-    }
-
-    public int getNumberBuy() {
-        return numberBuy;
-    }
-
-    public void setNumberBuy(int numberBuy) {
-        this.numberBuy = numberBuy;
+    public void setNumberBuyID(long numberBuyID) {
+        this.numberBuyID = numberBuyID;
     }
 
     public int getQuantity() {
@@ -80,14 +68,6 @@ public class Vendas {
         this.typeBuy = typeBuy;
     }
 
-    public Products getProduct() {
-        return product;
-    }
-
-    public void setProduct(Products product) {
-        this.product = product;
-    }
-
     public Date getCreated() {
         return created;
     }
@@ -96,11 +76,11 @@ public class Vendas {
         this.created = created;
     }
 
-    public double getVendasTotal() {
-        return vendasTotal;
+    public Products getProduct() {
+        return product;
     }
 
-    public void setVendasTotal(double vendasTotal) {
-        this.vendasTotal = vendasTotal;
+    public void setProduct(Products product) {
+        this.product = product;
     }
 }

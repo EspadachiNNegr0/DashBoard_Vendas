@@ -8,6 +8,7 @@ import com.shadow.dashboard2.services.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,46 +41,47 @@ public class VendasController {
         }
 
         mvs.addObject("vendas", vendas);
-
         return mvs;
     }
-
 
     @GetMapping("/vendas/add")
     public ModelAndView AddVenda() {
         ModelAndView modelAndView = new ModelAndView("vendas/addVenda");
 
-        // Obtenha todos os produtos do banco de dados
         List<Products> productsList = productRepository.findAll();
-
-        // Adiciona a lista de produtos ao modelo para ser usada na view
         modelAndView.addObject("productsList", productsList);
 
         return modelAndView;
     }
 
-
     @PostMapping("/vendas/add")
     public String saveVenda(@ModelAttribute Vendas venda, @RequestParam String nameProduct) {
-        // Recuperando o produto pelo nome
         Products product = productRepository.findByNameProduct(nameProduct);
 
         if (product == null) {
             return "redirect:/vendas/add?error=productNotFound";
         }
 
-        // Calculando o preço total
         venda.setProduct(product);
         venda.setPriceTotal(product.getPrice() * venda.getQuantity());
 
-        // Salvando a venda
         vendasRepository.save(venda);
 
         return "redirect:/venda"; // Redirecionamento após salvar
     }
 
+    @GetMapping("/venda/{numberBuyID}")
+    public String detalhesVenda(@PathVariable("numberBuyID") long numberBuyID, Model model) {
+        // Recupera os dados da venda usando o serviço
+        Vendas venda = vendaService.findById(numberBuyID);
 
-
+        if (venda != null) {
+            model.addAttribute("venda", venda);
+            return "detalhes/detalhesVendas";  // Nome da página de detalhes da venda
+        } else {
+            return "redirect:/venda";  // Caso a venda não exista, redireciona para a lista
+        }
+    }
 }
 
 

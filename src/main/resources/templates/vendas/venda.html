@@ -14,7 +14,7 @@
     <aside>
         <header class="top">
             <div class="logo">
-                <img src="./images/logo.png" alt="Logo da Shadow">
+                <img src="/images/logo.png" alt="Logo da Shadow">
                 <h2 class="text-muted">SHA<span class="danger">DOW</span></h2>
             </div>
         </header>
@@ -60,17 +60,20 @@
                     <th>Forma de pagamento</th>
                     <th>Quantidade</th>
                     <th>Valor Total</th>
+                    <th>Data</th>
                     <th>Descrição</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="venda : ${vendas}">
-                    <td th:text="${venda.numberBuy}"></td>
-                    <td th:text="${venda.product.nameProduct}"></td>
-                    <td class="warning" th:text="${venda.TypeBuy}"></td>
-                    <td th:text="${venda.quantity}"></td>
-                    <td th:text="${venda.priceTotal}"></td>
-                    <td class="primary">Detalhes</td>
+                    <td th:text="${venda.numberBuyID}"></td> <!-- Exibe o número da venda -->
+                    <td th:text="${venda.product.nameProduct}"></td> <!-- Exibe o nome do produto -->
+                    <td th:text="${venda.typeBuy}"></td> <!-- Exibe a forma de pagamento -->
+                    <td th:text="${venda.quantity}"></td> <!-- Exibe a quantidade -->
+                    <td th:text="${venda.priceTotal}"></td> <!-- Exibe o preço total -->
+                    <td th:text="${venda.created}"></td>
+                    <!-- Link para a página de detalhes da venda -->
+                    <td><a th:href="@{/venda/{id}(id=${venda.numberBuyID})}" class="btn btn-info">Detalhes</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -91,14 +94,14 @@
                     <small class="text-muted">Administrador</small>
                 </div>
                 <div class="profile-photo">
-                    <img src="images/Admin.jpg" alt="" />
+                    <img src="/images/Admin.jpg" alt="" />
                 </div>
             </div>
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu">
                     <div class="user-info">
-                        <img src="images/Admin.jpg" alt="Perfil">
+                        <img src="/images/Admin.jpg" alt="Perfil">
                         <h2>Shadow</h2>
                     </div>
                     <hr>
@@ -110,38 +113,37 @@
                         <span class="material-symbols-sharp">settings</span>
                         Configurações
                     </a>
-                    <a href="/logout">
-                        <span class="material-symbols-sharp">logout</span>
-                        Sair
-                    </a>
+                    <form action="/logout" method="post">
+                        <button type="submit"><a><span class="material-symbols-sharp">logout</span>Sair</a></button>
+                    </form>
                 </div>
             </div>
-
 
             <section class="recent-updates">
-            <h2>Atualizações Recentes</h2>
-            <div class="updates">
-                <div class="update">
-                    <div class="profile-photo">
-                        <img src="./images/Admin.jpg" alt="Foto de perfil">
-                    </div>
-                    <div class="message">
-                        <p><b>Shadow (admin)</b> recebeu seu pedido agora.</p>
-                        <small class="text-muted">Há 2 minutos</small>
+                <h2>Atualizações Recentes</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="/images/Admin.jpg" alt="Foto de perfil">
+                        </div>
+                        <div class="message">
+                            <p><b>Shadow (admin)</b> recebeu seu pedido agora.</p>
+                            <small class="text-muted">Há 2 minutos</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="sales-analytics">
-            <a href="/vendas/add" class="item add-product">
-                <div>
-                    <span class="material-icons-sharp">+</span>
-                    <h3>Add Venda</h3>
-                </div>
-            </a>
-        </section>
+            </section>
+            <section class="sales-analytics">
+                <a href="/vendas/add" class="item add-product">
+                    <div>
+                        <span class="material-icons-sharp">+</span>
+                        <h3>Add Venda</h3>
+                    </div>
+                </a>
+            </section>
+        </div>
     </div>
-</div>
-<script src="js/index.js"></script>
+
+    <script src="js/index.js"></script>
 </body>
 </html>

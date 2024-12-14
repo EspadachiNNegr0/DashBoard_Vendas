@@ -141,17 +141,17 @@
                     <th>Forma de pagamento</th>
                     <th>Quantidade</th>
                     <th>Valor Total</th>
-                    <th>Descrição</th>
+                    <th>Data</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="venda : ${vendas}">
-                    <td th:text="${venda.numberBuy}"></td> <!-- Exibe o número da venda -->
+                    <td th:text="${venda.numberBuyID}"></td> <!-- Exibe o número da venda -->
                     <td th:text="${venda.product.nameProduct}"></td>
                     <td class="warning" th:text="${venda.TypeBuy}"></td> <!-- Exibe o tipo de compra -->
                     <td th:text="${venda.quantity}"></td>
                     <td th:text="${venda.priceTotal}"></td> <!-- Exibe o preço total -->
-                    <td class="primary">Detalhes</td> <!-- Exibe o botão de detalhes -->
+                    <td th:text="${venda.created}"></td> <!-- Exibe o botão de detalhes -->
                 </tr>
                 </tbody>
             </table>
@@ -193,10 +193,9 @@
                         <span class="material-symbols-sharp">settings</span>
                         Configurações
                     </a>
-                    <a href="/logout">
-                        <span class="material-symbols-sharp">logout</span>
-                        Sair
-                    </a>
+                    <form action="/logout" method="post">
+                        <button type="submit"><a><span class="material-symbols-sharp">logout</span>Sair</a></button>
+                    </form>
                 </div>
             </div>
 

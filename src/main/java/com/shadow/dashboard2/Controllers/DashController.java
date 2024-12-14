@@ -6,6 +6,7 @@ import com.shadow.dashboard2.repositors.VendasRepository;
 import com.shadow.dashboard2.models.Vendas;
 import com.shadow.dashboard2.services.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,6 +45,14 @@ public class DashController {
         mv.addObject("somaDespes", somaDespes);
         mv.addObject("vendas", vendas); // Passa as vendas para o template
         return mv;
+    }
+
+    @RequestMapping("/{numberBuyID}")
+    public String detalhesVendas(@PathVariable("numberBuyID") long numberBuyID) {
+        Vendas venda = VendasRepository.findById(numberBuyID).get();
+        ModelAndView mv = new ModelAndView("detalhes/DetalhesVendas");
+        mv.addObject("venda", venda);
+        return mv.toString();
     }
 
 }

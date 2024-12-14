@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota_Fiscal</title>
+    <link rel="stylesheet" href="/css/n.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="areaNfce">
+    <table class="mainNfce">
+        <thead>
+        <tr>
+            <td class="logo">
+                <img src="/images/news_logo.png" alt="Logo" />
+            </td>
+            <td class="company-info">
+                <h2>News Recicle Ltda.</h2>
+                <p>CNPJ: 09.275.782/0001-46</p>
+                <p>Endereço: Rua Dner, 1</p>
+                <p>Bairro: Entrada de Cotegipe</p>
+                <p>Cidade: Simões Filho</p>
+                <p>Estado: BA</p>
+                <p>CEP: 43700-000</p>
+            </td>
+        </tr>
+        </thead>
+    </table>
+
+    <table class="detailSale">
+        <h1>Detalhes da Venda</h1>
+        <div class="nota-fiscal" id="notaFiscal"> <!-- Adicionando o ID aqui -->
+            <h2>Nota de Controle - Venda #<span th:text="${venda.numberBuyID}">12345</span></h2> <!-- Exemplo de valor dinâmico no Thymeleaf -->
+
+            <p><strong>Nome do Produto:</strong> <span th:text="${venda.product.nameProduct}">Produto X</span></p>
+            <p><strong>Quantidade:</strong> <span th:text="${venda.quantity}">2</span></p>
+            <p><strong>Forma de Pagamento:</strong> <span th:text="${venda.typeBuy}">Cartão</span></p>
+            <p><strong>Preço Total:</strong> R$ <span th:text="${venda.priceTotal}">200,00</span></p>
+            <p><strong>Data da Venda:</strong> <span th:text="${venda.created}">10/12/2024</span></p>
+        </div>
+    </table>
+
+    <div class="pdf">
+        <a href="/venda" class="button-back">Voltar para Vendas</a>
+    </div>
+
+    <table class="nfceFooter">
+        <div class="qrCode">
+            <img src="/images/gr.jpeg" alt="QR Code" />
+        </div>
+        <tr>
+            <td>
+                <p>Este é um documento eletrônico. Não é necessário um recibo em papel.</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
