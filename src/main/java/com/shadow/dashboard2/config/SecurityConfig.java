@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/login", "/css/**", "/js/**").permitAll() // Permite acesso à login e arquivos estáticos
                         .requestMatchers("/vendas/add").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/pro/add").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

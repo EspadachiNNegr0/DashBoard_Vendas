@@ -36,10 +36,6 @@
                 <span class="material-symbols-sharp">inventory</span>
                 <h3>Produtos</h3>
             </a>
-            <a href="config.html" aria-label="Ir para a seção de Configurações">
-                <span class="material-symbols-sharp">settings</span>
-                <h3>Configurações</h3>
-            </a>
         </nav>
     </aside>
 
@@ -58,6 +54,7 @@
                     <th>Numero do produto</th>
                     <th>Nome do produto</th>
                     <th>Preco do produto</th>
+                    <th>Quantidade</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,6 +62,7 @@
                     <td th:text="${product.idProduct}"></td>
                     <td th:text="${product.nameProduct}"></td>
                     <td th:text="${product.price}"></td>
+                    <td th:text="${product.quantity}"></td>
                 </tr>
                 </tbody>
             </table>

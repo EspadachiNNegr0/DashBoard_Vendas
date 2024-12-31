@@ -54,10 +54,6 @@
             <!--                <span class="material-symbols-sharp">add</span>-->
             <!--                <h3>Adicionar Produto</h3>-->
             <!--            </a>-->
-            <a href="config.html" aria-label="Ir para a seção de Configurações">
-                <span class="material-symbols-sharp">settings</span>
-                <h3>Configurações</h3>
-            </a>
         </nav>
     </aside>
 
@@ -116,7 +112,7 @@
                 <div class="middle">
                     <div class="left">
                         <h3>Total de Receitas</h3>
-                        <h1>$10,864</h1>
+                        <h1>$<span th:text="${receitaT}"></span></h1>
                     </div>
                     <div class="progress">
                         <svg>
@@ -217,5 +213,6 @@
         </div>
     </div>
     <script src="js/index.js"></script>
+
 </body>
 </html>

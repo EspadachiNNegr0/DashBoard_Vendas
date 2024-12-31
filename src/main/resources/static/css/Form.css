@@ -496,6 +496,7 @@ main .recent-orders a {
 
 .right .top button {
     background: var(--color-white);
+    cursor: pointer;
 }
 
 .right .theme-toggler {

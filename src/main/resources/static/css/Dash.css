@@ -496,6 +496,7 @@ main .recent-orders a {
 
 .right .top button {
     background: var(--color-white);
+    cursor: pointer;
 }
 
 .right .theme-toggler {
@@ -643,7 +644,7 @@ button.primary-btn {
     border: none; /* Sem borda */
     padding:  200px; /* Espaçamento interno */
     font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Indicador de clique */
+    cursor: none; /* Indicador de clique */
     transition: color 0.3s ease, transform 0.2s; /* Transição para a cor e o efeito de hover */
 }
 

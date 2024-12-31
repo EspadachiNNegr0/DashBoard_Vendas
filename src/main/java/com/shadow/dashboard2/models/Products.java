@@ -16,6 +16,7 @@ public class Products {
 
     private Double price;
     private String description;
+    private int quantity;
 
     // Construtor padrão (sem parâmetros)
     public Products() {
@@ -56,5 +57,13 @@ public class Products {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
